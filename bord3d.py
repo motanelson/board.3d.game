@@ -21,7 +21,17 @@ def saves(files,arrays):
 
 # corrigido: cada dimensão é independente
 def board3d(x,y,z):
-    return [[[" " for _ in range(x)] for _ in range(y)] for _ in range(z)]
+    a=" "
+    b=[]
+    c=[]
+    d=[]
+    for xx in range(x):
+        b=b+[a]
+    for yy in range(y):
+        c=c+[b.copy()]
+    for zz in range(z):
+        d=d+[c.copy()]
+    return d
 
 
 a=board3d(2,2,2)
