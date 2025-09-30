@@ -1,10 +1,12 @@
 print("\033c\033[43;30m\nboard\n")
 def saves(files,arrays):
+    ll=False
     f1=open(files,"w")
     for n in arrays:
-        f1.write(";")
+        if ll!=False:
+             f1.write(";")
         
-        
+        ll=True
         for nn in n:
              l=False
              for nnn in nn:
