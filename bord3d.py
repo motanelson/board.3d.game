@@ -1,5 +1,29 @@
 print("\033c\033[43;30m\nboard\n")
 #print("\033c\033[43;30m\nboard\n")
+def loads(texts):
+    ll=True
+    zi=0
+    xi=0
+    yi=0
+    a=[]
+    ttt=texts.split(";")
+    zi=len(ttt)
+    for t in range(zi):
+        yyy=ttt[t].split("\n")
+        yi=len(yyy)
+        for y in range(yi):
+            xxx=yyy[y].split(",")
+            xi=len(xxx)
+            if ll:
+                a=board3d(xi,yi,zi)
+            ll=False
+            for x in range(xi):
+                 b=xxx[x].strip()
+                 if b=="":
+                     a[t][y][x]=" "
+                 else:
+                     a[t][y][x]=b
+    return a
 def saves(files,arrays):
     ll=False
     f1=open(files,"w")
@@ -47,9 +71,13 @@ def mark(list1,array1,value):
 def board3d(x,y,z):
     return [[[" " for _ in range(x)] for _ in range(y)] for _ in range(z)]
 
-a=board3d(8,8,8)
-c=build(4,2,2,1)
-d=mark(c,a,"X")
-print(a)
-saves("my.xyz",a)
+#a=board3d(8,8,8)
+#c=build(4,2,2,1)
+#d=mark(c,a,"X")
 #print(a)
+f1=open("my.xyz","r")
+var1=f1.read()
+f1.close()
+a=loads(var1) 
+#saves("my.xyz",a)
+print(a)
