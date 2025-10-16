@@ -20,11 +20,36 @@ def saves(files,arrays):
     f1.close()
 
 # corrigido: cada dimensão é independente
+def build(lena,incx,incy,incz):
+    x=0
+    y=0
+    z=0
+    list1=[]
+    for n in range(lena):
+        
+        l1=[x,y,z]
+        list1=list1+[l1]
+        x=x+incx
+        y=y+incy
+        z=z+incz
+    return list1 
+
+def mark(list1,array1,value):
+    c=0
+    for n in list1:
+        
+        xx=n[0]
+        yy=n[1]
+        zz=n[2]
+        array1[zz][yy][xx]=value
+        c=c+1    
+    return array1
 def board3d(x,y,z):
     return [[[" " for _ in range(x)] for _ in range(y)] for _ in range(z)]
 
-a=board3d(2,2,2)
-a[0][0][0]="X"
-a[0][0][1]="O"
-saves("my.xyz",a)
+a=board3d(8,8,8)
+c=build(4,2,2,1)
+d=mark(c,a,"X")
 print(a)
+saves("my.xyz",a)
+#print(a)
